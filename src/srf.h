@@ -54,7 +54,7 @@ void srf_trig() {
 }
 
 
-void srf_process_echo(srf_t* srf) {
+void srf_process_interrupt(srf_t* srf) {
 	if(GPIO_has_interrupt(srf->port)) {
 		if(GPIO_is_rising_egde(srf->port)) {
 			GPIO_select_falling_edge(srf->port);
@@ -64,10 +64,17 @@ void srf_process_echo(srf_t* srf) {
 		GPIO_clearInterrupt(srf->port);
 	}
 }
-void srf_process_echos() {
+void srf_process_interrupts() {
+	for(int i=0; SRF[i].port; i++) srf_process_interrupt(&SRF[i]);
+}
+
+
+void srf_print() {
 	for(int i=0; SRF[i].port; i++) {
-		srf_process_echo(&SRF[i]);
+		if(i) uart_putc(' ');
+		cprintf("%d", SRF[i].distance);
 	}
+	uart_putc('\n');
 }
 
 
