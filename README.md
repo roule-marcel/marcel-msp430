@@ -14,7 +14,9 @@ stty -F /dev/ttyACM1 isig raw 9600; cat /dev/ttyACM1
 
 # Used ports
 
------------------------
+
+| Port | Function     |
+|------|--------------|
 | P1.0 | LED1         |
 | P1.1 | Button 2     |
 | P1.2 | SRF1         |
