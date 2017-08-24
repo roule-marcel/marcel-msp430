@@ -33,6 +33,7 @@ stty -F /dev/ttyACM1 isig raw 9600; cat /dev/ttyACM1
 | P2.6 | QEI1B        |
 | P2.0 | QEI2A        |
 | P2.2 | QEI2B        |
+| P6.0 | TRIG         |
 -----------------------
 
 
