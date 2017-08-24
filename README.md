@@ -27,6 +27,8 @@ stty -F /dev/ttyACM1 isig raw 9600; cat /dev/ttyACM1
 | P2.4 | SRF5         | 
 | P3.5 | PWM1         |
 | P3.6 | PWM2         |
+| P4.1 | DIR1         |
+| P4.2 | DIR2         |
 | P4.7 | LED2         |
 | P8.1 | BEEP         |
 | P2.3 | QEI1A        |
