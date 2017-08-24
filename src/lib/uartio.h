@@ -53,6 +53,21 @@ cput_hex_long (long int n)
 }
 
 void
+cput_long (unsigned long int n)
+{
+	char buf[20];
+	  int i = 0;
+	  while (n > 9)
+	    {
+	      buf[i++] = (n%10) + '0';
+	      n /= 10;
+	    }
+	  buf[i++] = (n%10) + '0';
+	  while (i > 0)
+	    uart_putc (buf[--i]);
+}
+
+void
 cput_hex_block (char *block, int n)
 {
   int i = 0;
@@ -145,8 +160,8 @@ cprintf (const char *fmt, ...)
 	    cput_hex_word (i);
 	    break;
 	  case 'l':
-	    i = va_arg (v, int);
-	    cput_hex_long (i);
+	    i = va_arg (v, unsigned long int);
+	    cput_long (i);
 	    break;
 	  case 'x':
 	    s = va_arg (v, char *);

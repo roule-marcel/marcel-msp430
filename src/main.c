@@ -28,6 +28,9 @@ void init() {
 }
 
 
+float x = 0;
+float dir = 0.1;
+
 int main(int argc, char *argv[])
 {
 	init();
@@ -38,6 +41,8 @@ int main(int argc, char *argv[])
 		usleep(40000);          // delay for 30ms (after this time echo times out if there is no object detected)
 
 		srf_print();
+		qei_print();
+		cprintf("%d\n", (int)(x*100));
 	}
 }
 
@@ -61,11 +66,16 @@ __interrupt void Port_2(void) {
 
 
 
-
 void on_button1() {
 	LED1_TOGGLE();
+	x+=dir;
+	if(x<-1) { dir=-dir; x=-1; }
+	if(x>1) { dir=-dir; x=1; }
+	pwm1_set_duty(x);
 }
 
 void on_button2() {
 	LED2_TOGGLE();
+	x=0;
+	pwm1_set_duty(x);
 }

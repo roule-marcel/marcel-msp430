@@ -63,6 +63,9 @@ void qei_process_interrupts() {
 	}
 }
 
+void qei_print() {
+	cprintf("Q%l %l\n", encoder_left, encoder_right);
+}
 
 
 
